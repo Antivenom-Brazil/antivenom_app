@@ -1,107 +1,151 @@
-# Mapa de Centros Comunitários e Hospitais com Soro Antibotrópico
+# Mapa Antiveneno
 
-## 📚 Descrição
+> Plataforma web para localização rápida de centros de distribuição de soro antiofídico em todo o Brasil.
 
-Este projeto é um mapa interativo que apresenta centros comunitários e hospitais em todo o Brasil onde o **Soro Antibotrópico** está disponível para atendimento.  
-O objetivo é oferecer uma ferramenta pública, responsiva e de fácil acesso para localizar rapidamente unidades de saúde que disponibilizam o soro.
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Mapbox](https://img.shields.io/badge/Mapbox-000000?style=flat&logo=mapbox&logoColor=white)](https://www.mapbox.com/)
 
-A aplicação foi desenvolvida com foco em:
-- Visualização intuitiva através de mapa interativo (via Mapbox)
-- Filtros dinâmicos por município, estado e tipo de unidade
-- Tabela responsiva com os dados correspondentes
-- Estrutura modularizada para facilitar expansões futuras
+## 📋 Sobre o Projeto
 
-O projeto está hospedado na **Vercel** inicialmente para testes.
+O **Mapa Antiveneno** é uma ferramenta web para localizar centros de atendimento com soros antiofídicos disponíveis no Brasil. Em casos de acidentes com animais peçonhentos, nossa plataforma permite encontrar rapidamente o centro mais próximo com informações detalhadas de contato e tipos de soro disponíveis.
 
----
+### 🎯 Funcionalidades
 
-### 🔗 Link do Projeto
+-  **Mapa Interativo** - Visualização de todos os centros em mapa com Mapbox
+-  **Geolocalização** - Encontre os 5 centros mais próximos da sua localização
+-  **Estatísticas** - Métricas detalhadas por região e estado
+-  **Responsivo** - Interface otimizada para mobile, tablet e desktop
+-  **Modos de Visualização** - Alternar entre pontos e heatmap no mapa
 
-Acesse a versão publicada do projeto através do link:
+## 🚀 Quick Start
 
-👉 [https://mapa-soros.vercel.app/](https://mapa-soros.vercel.app/)
+```bash
+# Clone o repositório
+git clone https://github.com/Antivenom-Brazil/antivenom_app.git
+cd antivenom_app/soro-map-mvp
 
+# Instale as dependências
+npm install
 
-## 🎯 Objetivos
+# Configure as variáveis de ambiente
+cp .env.example .env
+# Edite .env e adicione seu token do Mapbox
 
-- Facilitar a busca por centros e hospitais que disponibilizam Soro Antibotrópico.
-- Fornecer uma interface acessível tanto em desktops quanto em dispositivos móveis.
-- Modularizar o projeto para permitir atualizações e crescimento futuros.
-- Utilizar tecnologias web abertas e hospedagem gratuita.
-
----
-
-## 🏗️ Estrutura de Diretórios
-
-```
-├── README.md
-├── index.html
-└── src
-    ├── components
-    │   ├── Filtros.html
-    │   ├── Header.html
-    │   ├── MapaIframe.html
-    │   └── Tabela.html
-    ├── scripts
-    │   ├── filtros.js
-    │   └── tabela.js
-    └── styles
-        └── style.css
+# Inicie o servidor de desenvolvimento
+npm run dev
 ```
 
-**Descrição dos diretórios:**
-- `index.html`: Arquivo principal que monta a estrutura da página carregando os componentes.
-- `src/components/`: Contém os pedaços da interface HTML (Header, Mapa, Filtros, Tabela).
-- `src/scripts/`: Contém os arquivos JavaScript para controle de filtros e preenchimento da tabela.
-- `src/styles/`: Contém o estilo CSS utilizado em toda a aplicação.
+Acesse em: `http://localhost:5173`
 
----
+## 🛠️ Tech Stack
 
-## 🛠️ Tecnologias Utilizadas
+### Core
+- **React 18** - Biblioteca UI
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
 
-- **HTML5**
-- **CSS3** (com fontes do Google Fonts)
-- **JavaScript Puro**
-- **Mapbox GL JS** (embutido via iframe)
-- **Hospedagem na Vercel**
+### UI & Styling
+- **CSS Modules** - Estilos com escopo
+- **Lucide React** - Ícones modernos
 
----
+### Mapa & Geolocalização
+- **Mapbox GL JS** - Renderização de mapas interativos
+- **Geolocation API** - Localização do usuário
 
-## 🚀 Como Rodar Localmente
+### Code Quality
+- **ESLint** - Linting
+- **TypeScript Compiler** - Verificação de tipos
 
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/seu-usuario/mapa-soros.git
-    ```
+## 📁 Estrutura do Projeto
 
-2. Acesse o diretório:
-    ```bash
-    cd mapa-soros
-    ```
+```
+soro-map-mvp/
+├── public/
+│   └── data/
+│       └── centros-db.json      # Database de centros
+├── src/
+│   ├── domain/                  # Modelos de domínio
+│   ├── infrastructure/          # Serviços e dados
+│   │   ├── content/            # Conteúdo declarativo (YAML)
+│   │   ├── data/               # Dados e métricas
+│   │   ├── mapbox/             # Integração Mapbox
+│   │   └── logging/            # Sistema de logs
+│   ├── ui/
+│   │   ├── components/         # Componentes reutilizáveis
+│   │   └── pages/              # Páginas da aplicação
+│   └── index.css               # Estilos globais
+├── .env.example                # Template de variáveis
 
-3. Abra o arquivo `index.html` diretamente no navegador  
-   (para carregamento via `fetch`, o ideal é usar um servidor local como Live Server do VSCode ou hospedar na Vercel).
+```
 
----
+## ⚙️ Configuração
 
-## ✨ Melhorias Futuras
+### Variáveis de Ambiente
 
-- Integração com bases de dados atualizadas automaticamente (API).
-- Adição de mais filtros (por disponibilidade de tipos de soros, especializações médicas, etc).
-- Implementar paginação na tabela de dados.
-- Tornar o mapa ainda mais interativo usando Mapbox GL JS diretamente.
+Crie um arquivo `.env` na raiz do projeto:
 
----
+```bash
+# Token público do Mapbox (obrigatório)
+VITE_MAPBOX_TOKEN=seu_token_aqui
 
-## 👨‍💻 Autor
+# Style URL do Mapbox (opcional)
+VITE_MAPBOX_STYLE=mapbox://styles/mapbox/streets-v12
+```
 
-Desenvolvido por Douglas Felipe, Ruan Silva e Lucas Santos
-Contato: dougbiomed@gmail.com
 
----
+## 📦 Scripts Disponíveis
+
+```bash
+npm run dev          # Servidor de desenvolvimento
+npm run build        # Build de produção
+npm run preview      # Preview do build
+npm run type-check   # Verificar tipos TypeScript
+npm run lint         # Executar ESLint
+```
+
+
+## 🗃️ Dados
+
+Os dados dos centros de distribuição são obtidos de fontes oficiais:
+
+- **Ministério da Saúde** - Dados de imunobiológicos
+- **CNES** - Cadastro Nacional de Estabelecimentos de Saúde
+- **Secretarias Estaduais** - Informações complementares
+
+## 🧪 Desenvolvimento
+
+### Arquitetura
+
+O projeto segue princípios de **Clean Architecture**:
+
+- **Domain Layer** - Modelos de negócio puros
+- **Infrastructure Layer** - Serviços externos, dados, APIs
+- **UI Layer** - Componentes React e páginas
+
+### Padrões de Código
+
+- ✅ Componentes funcionais com hooks
+- ✅ TypeScript strict mode
+- ✅ Props readonly por padrão
+- ✅ Semantic HTML
+- ✅ Acessibilidade (ARIA labels)
+
+## ⚠️ Aviso Importante
+
+Esta ferramenta tem **caráter informativo** e não substitui atendimento médico profissional.
+
+**Em caso de acidente com animais peçonhentos:**
+- 🚨 Procure imediatamente o serviço de saúde mais próximo
+- 📞 Ligue 192 (SAMU) em emergências
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
----
+## 📞 Suporte
+
+- 📧 Email: [contato@exemplo.com]()
+- 🐛 Issues: [GitHub Issues](https://github.com/Antivenom-Brazil/antivenom_app/issues)
+
