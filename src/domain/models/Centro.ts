@@ -21,6 +21,8 @@ export interface Centro {
   readonly tiposSoro: string[];
   /** Endereço completo ou referência */
   readonly endereco?: string;
+  /** Ponto de referência */
+  readonly referencia?: string;
   /** Telefone de contato */
   readonly telefone?: string;
   /** Código CNES */
