@@ -237,6 +237,7 @@ export function CentroDetailPage() {
                             </h2>
 
                             <InfoRow
+                                icon={<MapPin className="w-5 h-5" />}
                                 label={content.sections.location.address}
                                 value={centro.endereco}
                             />

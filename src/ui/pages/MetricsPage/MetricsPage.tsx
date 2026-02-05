@@ -31,9 +31,7 @@ import {
     getValueBasedColor,
     type StateData,
 } from '../../../infrastructure/data/metrics';
-import { createLogger } from '../../../infrastructure/logging/logger';
 
-const logger = createLogger('MetricsPage');
 
 // Load content
 const content = getMetricsContent();

@@ -10,7 +10,7 @@
  */
 
 import { Link } from 'react-router-dom';
-import { Github, Heart } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { getSection, formatString } from '../../../infrastructure/content';
 
 // Load content from declarative YAML
