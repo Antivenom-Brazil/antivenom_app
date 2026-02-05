@@ -1,0 +1,107 @@
+# Metrics Page Content Configuration
+# All text content for the metrics dashboard in declarative YAML format
+
+metrics_page:
+  title: "Métricas e Estatísticas"
+  description: "Análise detalhada da distribuição de centros de atendimento com soros antiofídicos no Brasil"
+  
+  # Summary cards section
+  summary:
+    title: "Resumo Geral"
+    cards:
+      total_centers:
+        label: "Total de Centros"
+        description: "Centros de distribuição cadastrados"
+      total_states:
+        label: "Estados"
+        description: "Unidades federativas com cobertura"
+      total_municipalities:
+        label: "Municípios"
+        description: "Municípios com centros ativos"
+      total_regions:
+        label: "Regiões"
+        description: "Regiões geográficas do Brasil"
+  
+  # Charts section
+  charts:
+    by_region:
+      title: "Distribuição por Região"
+      description: "Número de centros de atendimento em cada região do Brasil"
+      x_axis: "Região"
+      y_axis: "Centros"
+    by_state:
+      title: "Top 10 Estados"
+      description: "Estados com maior número de centros de distribuição"
+      x_axis: "Estado"
+      y_axis: "Centros"
+    region_pie:
+      title: "Proporção por Região"
+      description: "Distribuição percentual dos centros por região"
+  
+  # Data table section
+  table:
+    title: "Dados por Estado"
+    description: "Detalhamento completo por unidade federativa"
+    columns:
+      uf: "UF"
+      federal_unit: "Estado"
+      region: "Região"
+      total_centers: "Centros"
+      municipalities: "Municípios"
+      percentage: "%"
+      centers_per_municipality: "Centros/Município"
+    actions:
+      export_csv: "Exportar CSV"
+      export_json: "Exportar JSON"
+    pagination:
+      showing: "Mostrando"
+      of: "de"
+      results: "resultados"
+      previous: "Anterior"
+      next: "Próximo"
+    search:
+      placeholder: "Buscar estado..."
+      aria_label: "Search states"
+  
+  # Filters section
+  filters:
+    title: "Filtros"
+    region:
+      label: "Região"
+      all: "Todas as regiões"
+    reset: "Limpar filtros"
+  
+  # Region names mapping (English to Portuguese)
+  region_names:
+    Southeast: "Sudeste"
+    Northeast: "Nordeste"
+    South: "Sul"
+    North: "Norte"
+    Midwest: "Centro-Oeste"
+  
+  # Color scheme for regions
+  region_colors:
+    Southeast: "#10B981"
+    Northeast: "#3B82F6"
+    South: "#F59E0B"
+    North: "#8B5CF6"
+    Midwest: "#EF4444"
+
+# Data quality section
+data_quality:
+  title: "Qualidade dos Dados"
+  completeness: "Completude"
+  with_cnes: "Com CNES"
+  with_phone: "Com Telefone"
+  with_coords: "Com Coordenadas"
+  complete: "100% completo"
+
+# Geographic info
+geographic:
+  title: "Informações Geográficas"
+  center: "Centro Geográfico"
+  bounds: "Limites"
+  min_lat: "Latitude Mínima"
+  max_lat: "Latitude Máxima"
+  min_lng: "Longitude Mínima"
+  max_lng: "Longitude Máxima"

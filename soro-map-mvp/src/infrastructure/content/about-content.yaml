@@ -1,0 +1,73 @@
+# About Page Content Configuration
+# All text content for the about page in declarative YAML format
+
+about_page:
+  title: "Sobre o Projeto"
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+  # Hero section
+  hero:
+    title: "Lorem ipsum"
+    content: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    highlight: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+
+
+  # How it works section
+  how_it_works:
+    title: "Como Funciona"
+    description: "Nossa ferramenta foi desenvolvida para ser simples e eficiente"
+    steps:
+      - number: 1
+        title: "Localize-se"
+        description: "Permita o acesso à sua localização ou busque manualmente por estado/cidade."
+      - number: 2
+        title: "Encontre centros"
+        description: "Visualize os centros de distribuição de soro mais próximos de você."
+      - number: 3
+        title: "Obtenha informações"
+        description: "Acesse dados de contato, endereço e tipos de soro disponíveis."
+
+  # Features section
+  features:
+    title: "Recursos da Ferramenta"
+    items:
+      - icon: "map"
+        title: "Mapa Interativo"
+        description: "Visualize todos os centros de distribuição em um mapa intuitivo com opções de pontos ou heatmap."
+      - icon: "navigation"
+        title: "Geolocalização"
+        description: "Encontre automaticamente os centros mais próximos da sua localização atual."
+      - icon: "bar-chart"
+        title: "Estatísticas"
+        description: "Acesse métricas e dados sobre a distribuição de centros por região e estado."
+      - icon: "smartphone"
+        title: "Mobile-First"
+        description: "Interface responsiva otimizada para uso em dispositivos móveis."
+
+  # Data sources section
+  data_sources:
+    title: "Fontes de Dados"
+    description: "Nossos dados são obtidos de fontes oficiais e atualizados periodicamente"
+    sources:
+      - name: "Ministério da Saúde"
+        description: "Dados oficiais sobre distribuição de imunobiológicos"
+      - name: "CNES"
+        description: "Cadastro Nacional de Estabelecimentos de Saúde"
+      - name: "Secretarias Estaduais"
+        description: "Informações complementares de cada unidade federativa"
+
+  # Disclaimer
+  disclaimer:
+    title: "Aviso Importante"
+    content: |
+      Esta ferramenta tem caráter informativo e não substitui o atendimento médico profissional. 
+      Em caso de acidente com animais peçonhentos, procure imediatamente o serviço de saúde mais próximo.
+    emergency: "Em emergências, ligue 192 (SAMU)"
+
+  # CTA section
+  cta:
+    title: "Explore a Ferramenta"
+    description: "Comece a explorar o mapa e descubra os centros de distribuição mais próximos de você."
+    button_map: "Ver Mapa"
+    button_metrics: "Ver Estatísticas"

@@ -1,15 +1,30 @@
 /**
- * @fileoverview UI content loader and accessor.
+ * @fileoverview YAML content loader with type safety.
  *
- * Provides type-safe access to declarative YAML content.
- * Enables centralized text management and future i18n support.
+ * Loads content from YAML files and provides type-safe access.
+ * Uses Vite's raw import to include YAML at build time.
  *
  * @module infrastructure/content
  */
 
+import YAML from 'yaml';
 import { createLogger } from '../logging/logger';
 
-const logger = createLogger('UIContent');
+// Import YAML files as raw strings (Vite feature)
+import uiContentYaml from './ui-content.yaml?raw';
+import metricsContentYaml from './metrics-content.yaml?raw';
+import aboutContentYaml from './about-content.yaml?raw';
+import centroDetailsContentYaml from './centro-details-content.yaml?raw';
+
+const logger = createLogger('ContentLoader');
+
+/**
+ * Navigation item structure.
+ */
+interface NavItem {
+    label: string;
+    path: string;
+}
 
 /**
  * UI Content structure matching ui-content.yaml
@@ -78,6 +93,7 @@ export interface UIContent {
             plural: string;
         };
         empty_state: string;
+        click_hint: string;
     };
     footer: {
         about: {
@@ -110,114 +126,162 @@ export interface UIContent {
     };
 }
 
-interface NavItem {
-    label: string;
-    path: string;
+/**
+ * Metrics page content structure.
+ */
+export interface MetricsPageContent {
+    title: string;
+    description: string;
+    summary: {
+        title: string;
+        cards: {
+            total_centers: { label: string; description: string };
+            total_states: { label: string; description: string };
+            total_municipalities: { label: string; description: string };
+            total_regions: { label: string; description: string };
+        };
+    };
+    charts: {
+        by_region: { title: string; description: string; x_axis: string; y_axis: string };
+        by_state: { title: string; description: string; x_axis: string; y_axis: string };
+        region_pie: { title: string; description: string };
+    };
+    table: {
+        title: string;
+        description: string;
+        columns: Record<string, string>;
+        actions: { export_csv: string; export_json: string };
+        pagination: { showing: string; of: string; results: string; previous: string; next: string };
+        search: { placeholder: string; aria_label: string };
+    };
+    filters: {
+        title: string;
+        region: { label: string; all: string };
+        reset: string;
+    };
+    region_names: Record<string, string>;
+    region_colors: Record<string, string>;
 }
 
 /**
- * Static content loaded from YAML.
- * In a production app, this would be loaded dynamically.
+ * About page content structure.
  */
-const content: UIContent = {
-    app: {
-        name: "Mapa Antiveneno",
-        title: "Mapa de Soro Antiveneno",
-        description: "Ferramenta para localização de centros de atendimento com soros antiofídicos disponíveis em todo o Brasil",
-    },
-    header: {
-        logo_text: "Mapa Antiveneno",
-        logo_text_mobile: "Antiveneno",
-        nav: {
-            home: { label: "Home", path: "/" },
-            metrics: { label: "Métricas", path: "/metricas" },
-            about: { label: "Sobre", path: "/sobre" },
-        },
-        aria: {
-            open_menu: "Open menu",
-            close_menu: "Close menu",
-        },
-    },
-    hero_banner: {
-        title: "Mapa de Soro Antiveneno",
-        tagline: "Localize os centros de atendimento mais próximos com soros antiofídicos disponíveis em todo o Brasil",
-        cta: {
-            explore_map: "Explorar Mapa",
-            view_stats: "Ver Estatísticas",
-        },
-        metrics: {
-            centers: { label: "Centros" },
-            states: { label: "Estados" },
-            regions: { label: "Regiões" },
-        },
-    },
-    map_section: {
-        title: "Mapa Interativo",
-        description: "Visualize os centros de distribuição e encontre o mais próximo de você",
-    },
-    map_panel: {
-        controls: {
-            points: "Pontos",
-            heatmap: "Heatmap",
-            my_location: "Minha Localização",
-            locating: "Localizando...",
-            located: "Localizado",
-        },
-        errors: {
-            token_missing: "Mapbox token not configured. Set VITE_MAPBOX_TOKEN in .env file",
-            map_error: "Error creating map",
-        },
-        aria: {
-            show_location: "Show my location",
-        },
-    },
-    nearest_panel: {
-        title: "Centros Mais Próximos",
-        button: {
-            find: "Encontrar Próximos",
-            loading: "Localizando...",
-            clear: "Limpar",
-        },
-        results: {
-            single: "centro encontrado",
-            plural: "centros encontrados",
-        },
-        empty_state: "Clique no botão acima para localizar os centros mais perto de você.",
-    },
-    footer: {
-        about: {
-            title: "Mapa de Soro Antiveneno",
-            description: "Ferramenta para localização de centros de atendimento com soros antiofídicos disponíveis em todo o Brasil.",
-        },
-        links: {
-            title: "Links",
-            map: "Mapa",
-            metrics: "Métricas",
-            about: "Sobre o Projeto",
-        },
-        data_sources: {
-            title: "Fontes de Dados",
-            items: [
-                "Ministério da Saúde",
-                "CNES - Cadastro Nacional",
-                "Secretarias Estaduais",
-            ],
-        },
-        copyright: "© {year} Mapa Antiveneno. Dados abertos.",
-        made_with: "Feito com",
-        location: "no Brasil",
-    },
-    placeholders: {
-        in_development: "Em desenvolvimento",
-    },
-    errors: {
-        generic: "Ocorreu um erro. Tente novamente.",
-        location_denied: "Permissão de localização negada. Verifique as configurações do navegador.",
-        location_unavailable: "Não foi possível determinar sua localização. Tente novamente.",
-        location_timeout: "Tempo limite excedido ao obter localização. Tente novamente.",
-        location_unsupported: "Seu navegador não suporta geolocalização.",
-    },
-};
+export interface AboutPageContent {
+    title: string;
+    description: string;
+    hero: {
+        title: string;
+        content: string;
+        highlight: string;
+    };
+    pillars: Array<{
+        id: string;
+        title: string;
+        icon: string;
+        content: string;
+    }>;
+    how_it_works: {
+        title: string;
+        description: string;
+        steps: Array<{
+            number: number;
+            title: string;
+            description: string;
+        }>;
+    };
+    features: {
+        title: string;
+        items: Array<{
+            icon: string;
+            title: string;
+            description: string;
+        }>;
+    };
+    data_sources: {
+        title: string;
+        description: string;
+        sources: Array<{
+            name: string;
+            description: string;
+        }>;
+    };
+    disclaimer: {
+        title: string;
+        content: string;
+        emergency: string;
+    };
+    cta: {
+        title: string;
+        description: string;
+        button_map: string;
+        button_metrics: string;
+    };
+}
+
+/**
+ * Centro details page content structure.
+ */
+export interface CentroDetailsContent {
+    back_button: string;
+    not_found: {
+        title: string;
+        description: string;
+        button: string;
+    };
+    sections: {
+        location: {
+            title: string;
+            address: string;
+            municipality: string;
+            state: string;
+            region: string;
+            coordinates: string;
+        };
+        contact: {
+            title: string;
+            phone: string;
+            cnes: string;
+            cnes_description: string;
+        };
+        serums: {
+            title: string;
+            empty: string;
+        };
+        attendance: {
+            title: string;
+            type: string;
+            info: string;
+        };
+    };
+    actions: {
+        route: string;
+        route_description: string;
+        call: string;
+        share: string;
+        copy_address: string;
+        copied: string;
+    };
+    map: {
+        title: string;
+    };
+    aria: {
+        back: string;
+        call_phone: string;
+        open_maps: string;
+        share_center: string;
+    };
+}
+
+// Parse YAML content at module load time (build time with Vite)
+const uiContent: UIContent = YAML.parse(uiContentYaml);
+const metricsRaw = YAML.parse(metricsContentYaml);
+const metricsContent: MetricsPageContent = metricsRaw.metrics_page;
+const aboutRaw = YAML.parse(aboutContentYaml);
+const aboutContent: AboutPageContent = aboutRaw.about_page;
+const centroDetailsRaw = YAML.parse(centroDetailsContentYaml);
+const centroDetailsContent: CentroDetailsContent = centroDetailsRaw.centro_details;
+
+logger.debug('Content loaded from YAML files');
 
 /**
  * Gets the full UI content object.
@@ -225,8 +289,7 @@ const content: UIContent = {
  * @returns Complete UI content structure
  */
 export function getUIContent(): UIContent {
-    logger.debug('UI content accessed');
-    return content;
+    return uiContent;
 }
 
 /**
@@ -236,7 +299,34 @@ export function getUIContent(): UIContent {
  * @returns The requested content section
  */
 export function getSection<K extends keyof UIContent>(section: K): UIContent[K] {
-    return content[section];
+    return uiContent[section];
+}
+
+/**
+ * Gets the metrics page content.
+ *
+ * @returns Metrics page content object
+ */
+export function getMetricsContent(): MetricsPageContent {
+    return metricsContent;
+}
+
+/**
+ * Gets the about page content.
+ *
+ * @returns About page content object
+ */
+export function getAboutContent(): AboutPageContent {
+    return aboutContent;
+}
+
+/**
+ * Gets the centro details page content.
+ *
+ * @returns Centro details page content object
+ */
+export function getCentroDetailsContent(): CentroDetailsContent {
+    return centroDetailsContent;
 }
 
 /**

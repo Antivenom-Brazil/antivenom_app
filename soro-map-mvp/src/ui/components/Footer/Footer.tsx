@@ -87,7 +87,7 @@ export function Footer() {
 
                     <div className="flex items-center gap-4">
                         <a
-                            href="https://github.com"
+                            href="https://github.com/Antivenom-Brazil"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-white transition-colors"
@@ -95,9 +95,6 @@ export function Footer() {
                         >
                             <Github className="w-5 h-5" />
                         </a>
-                        <span className="flex items-center gap-1 text-sm text-gray-400">
-                            {content.made_with} <Heart className="w-4 h-4 text-red-500" /> {content.location}
-                        </span>
                     </div>
                 </div>
             </div>

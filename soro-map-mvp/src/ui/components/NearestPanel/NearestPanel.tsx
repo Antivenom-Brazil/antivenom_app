@@ -7,6 +7,7 @@
  * @module ui/components/NearestPanel
  */
 
+import { Link } from 'react-router-dom';
 import { MapPin, Loader2, AlertCircle, X, Navigation } from 'lucide-react';
 import type { NearestCentroResult } from '../../../domain/models/NearestResult';
 import { getSection, pluralize } from '../../../infrastructure/content';
@@ -39,36 +40,44 @@ interface NearestItemProps {
 
 function NearestItem({ item }: NearestItemProps) {
     return (
-        <li className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <div className="flex-1 min-w-0">
-                <p className="font-medium text-gray-900 truncate">{item.centro.nome}</p>
-                <p className="text-sm text-gray-500 mt-0.5">
-                    {item.centro.municipio} - {item.centro.uf}
-                </p>
-                {item.centro.tiposSoro.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-2">
-                        {item.centro.tiposSoro.slice(0, 2).map((tipo) => (
-                            <span
-                                key={tipo}
-                                className="inline-block px-2 py-0.5 text-xs bg-emerald-100 text-emerald-700 rounded"
-                            >
-                                {tipo}
-                            </span>
-                        ))}
-                        {item.centro.tiposSoro.length > 2 && (
-                            <span className="text-xs text-gray-500">
-                                +{item.centro.tiposSoro.length - 2}
-                            </span>
-                        )}
-                    </div>
-                )}
-            </div>
-            <div className="flex-shrink-0 text-right">
-                <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded">
-                    <Navigation className="w-3 h-3" />
-                    {item.distanceFormatted}
-                </span>
-            </div>
+        <li className="group">
+            <Link
+                to={`/centro/${item.centro.id}`}
+                className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-lg hover:bg-emerald-50 hover:ring-2 hover:ring-emerald-200 transition-all cursor-pointer"
+            >
+                <div className="flex-1 min-w-0">
+                    <p className="font-medium text-gray-900 truncate group-hover:text-emerald-700">{item.centro.nome}</p>
+                    <p className="text-sm text-gray-500 mt-0.5">
+                        {item.centro.municipio} - {item.centro.uf}
+                    </p>
+                    {item.centro.tiposSoro.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-2">
+                            {item.centro.tiposSoro.slice(0, 2).map((tipo) => (
+                                <span
+                                    key={tipo}
+                                    className="inline-block px-2 py-0.5 text-xs bg-emerald-100 text-emerald-700 rounded"
+                                >
+                                    {tipo}
+                                </span>
+                            ))}
+                            {item.centro.tiposSoro.length > 2 && (
+                                <span className="text-xs text-gray-500">
+                                    +{item.centro.tiposSoro.length - 2}
+                                </span>
+                            )}
+                        </div>
+                    )}
+                </div>
+                <div className="flex-shrink-0 text-right flex flex-col items-end gap-1">
+                    <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded">
+                        <Navigation className="w-3 h-3" />
+                        {item.distanceFormatted}
+                    </span>
+                    <span className="text-xs text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Ver detalhes →
+                    </span>
+                </div>
+            </Link>
         </li>
     );
 }
@@ -172,8 +181,11 @@ export function NearestPanel({
             {!hasResults && !hasError && !isLoading && (
                 <div className="flex-1 flex flex-col items-center justify-center text-center py-8">
                     <MapPin className="w-12 h-12 text-gray-300 mb-3" />
-                    <p className="text-gray-500 text-sm max-w-[200px]">
+                    <p className="text-gray-500 text-sm max-w-[200px] mb-2">
                         {content.empty_state}
+                    </p>
+                    <p className="text-gray-400 text-xs max-w-[200px]">
+                        {content.click_hint}
                     </p>
                 </div>
             )}

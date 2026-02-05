@@ -11,7 +11,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import type { Map } from 'mapbox-gl';
-import { MapPin, Flame, Navigation, Loader2, AlertCircle } from 'lucide-react';
+import { MapPin, Activity, Navigation, Loader2, AlertCircle } from 'lucide-react';
 import {
   createMap,
   setMapMode,
@@ -161,7 +161,7 @@ export function MapPanel() {
               }
             `}
           >
-            <Flame className="w-4 h-4" />
+            <Activity className="w-4 h-4" />
             <span className="hidden sm:inline">{content.controls.heatmap}</span>
           </button>
         </div>

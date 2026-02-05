@@ -65,6 +65,7 @@ nearest_panel:
     single: "centro encontrado"
     plural: "centros encontrados"
   empty_state: "Clique no botão acima para localizar os centros mais perto de você."
+  click_hint: "Clique em um centro para ver os detalhes."
 
 footer:
   about:
@@ -81,7 +82,7 @@ footer:
       - "Ministério da Saúde"
       - "CNES - Cadastro Nacional"
       - "Secretarias Estaduais"
-  copyright: "© {year} Mapa Antiveneno. Dados abertos."
+  copyright: "© {year} Mapa Antiveneno"
   made_with: "Feito com"
   location: "no Brasil"
 

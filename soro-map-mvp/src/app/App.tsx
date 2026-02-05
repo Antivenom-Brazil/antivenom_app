@@ -13,27 +13,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from '../ui/components/Header/Header';
 import { Footer } from '../ui/components/Footer';
 import { HomePage } from '../ui/pages/HomePage';
-import { getSection } from '../infrastructure/content';
+import { MetricsPage } from '../ui/pages/MetricsPage';
+import { AboutPage } from '../ui/pages/AboutPage';
+import { CentroDetailPage } from '../ui/pages/CentroDetailPage';
 import { createLogger } from '../infrastructure/logging/logger';
-
 const logger = createLogger('App');
-
-// Load content from declarative YAML
-const placeholders = getSection('placeholders');
-
-/**
- * Placeholder page for routes not yet implemented.
- */
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div className="flex-1 flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">{title}</h1>
-        <p className="text-gray-600">{placeholders.in_development}</p>
-      </div>
-    </div>
-  );
-}
 
 /**
  * Root application component.
@@ -54,8 +38,9 @@ export function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/metricas" element={<PlaceholderPage title="Métricas" />} />
-            <Route path="/sobre" element={<PlaceholderPage title="Sobre" />} />
+            <Route path="/metricas" element={<MetricsPage />} />
+            <Route path="/sobre" element={<AboutPage />} />
+            <Route path="/centro/:id" element={<CentroDetailPage />} />
           </Routes>
         </main>
 

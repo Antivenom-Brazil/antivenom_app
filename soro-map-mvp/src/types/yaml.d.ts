@@ -1,0 +1,13 @@
+/**
+ * Type declarations for YAML file imports.
+ * Allows Vite to import YAML files as raw strings.
+ */
+declare module '*.yaml?raw' {
+    const content: string;
+    export default content;
+}
+
+declare module '*.yml?raw' {
+    const content: string;
+    export default content;
+}

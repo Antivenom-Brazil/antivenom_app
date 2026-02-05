@@ -1,0 +1,55 @@
+# Centro Details Page Content Configuration
+# All text content for the centro details page in declarative YAML format
+
+centro_details:
+  # Page header
+  back_button: "Voltar"
+  not_found:
+    title: "Centro não encontrado"
+    description: "O centro de distribuição solicitado não foi encontrado."
+    button: "Voltar ao Mapa"
+
+  # Sections
+  sections:
+    location:
+      title: "Localização"
+      address: "Endereço"
+      municipality: "Município"
+      state: "Estado"
+      region: "Região"
+      coordinates: "Coordenadas"
+
+    contact:
+      title: "Contato"
+      phone: "Telefone"
+      cnes: "CNES"
+      cnes_description: "Cadastro Nacional de Estabelecimentos de Saúde"
+
+    serums:
+      title: "Tipos de Soro Disponíveis"
+      empty: "Informação não disponível"
+
+    attendance:
+      title: "Atendimento"
+      type: "Tipo"
+      info: "Informações"
+
+  # Actions
+  actions:
+    route: "Calcular Rota"
+    route_description: "Abrir no Google Maps"
+    call: "Ligar"
+    share: "Compartilhar"
+    copy_address: "Copiar Endereço"
+    copied: "Copiado!"
+
+  # Map section
+  map:
+    title: "Localização no Mapa"
+
+  # Aria labels
+  aria:
+    back: "Voltar para a página anterior"
+    call_phone: "Ligar para o centro"
+    open_maps: "Abrir localização no Google Maps"
+    share_center: "Compartilhar informações do centro"
