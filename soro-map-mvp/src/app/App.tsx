@@ -1,53 +1,62 @@
-import { useState, useMemo } from 'react';
+/**
+ * @fileoverview Main application component with routing.
+ *
+ * Sets up:
+ * - React Router for navigation
+ * - Global layout with Header and Footer
+ * - Route definitions
+ *
+ * @module app/App
+ */
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from '../ui/components/Header/Header';
-import { MapPanel } from '../ui/components/MapPanel/MapPanel';
-import { FiltersPanel } from '../ui/components/FiltersPanel/FiltersPanel';
-import { ResultsTable } from '../ui/components/ResultsTable/ResultsTable';
-import { NearestPanel } from '../ui/components/NearestPanel';
-import { centrosMock, ufsDisponiveis, tiposSoroDisponiveis } from '../infrastructure/data/centros.mock';
-import { filtrosIniciais, type Filtros } from '../domain/models/Filtros';
-import { getFilteredCentros } from '../application/usecases/getFilteredCentros';
-import { useNearestCentros } from '../ui/hooks/useNearestCentros';
-import '../ui/styles/app.css';
+import { Footer } from '../ui/components/Footer';
+import { HomePage } from '../ui/pages/HomePage';
+import { createLogger } from '../infrastructure/logging/logger';
 
-export function App() {
-  const [filtros, setFiltros] = useState<Filtros>(filtrosIniciais);
+const logger = createLogger('App');
 
-  // Centros filtrados (dados mockados para a tabela)
-  const centrosFiltrados = useMemo(
-    () => getFilteredCentros(centrosMock, filtros),
-    [filtros]
-  );
-
-  // Hook for nearest centers geospatial feature
-  const nearest = useNearestCentros(centrosMock);
-
+/**
+ * Placeholder page for routes not yet implemented.
+ */
+function PlaceholderPage({ title }: { title: string }) {
   return (
-    <div className="app">
-      <Header />
-
-      <main className="main-content">
-        <MapPanel />
-
-        {/* Geospatial Recommendation Panel */}
-        <NearestPanel
-          results={nearest.results}
-          isLoading={nearest.isLoading}
-          errorMessage={nearest.errorMessage}
-          onFindNearest={() => nearest.fetchNearest({ limit: 5 })}
-          onClear={nearest.clearResults}
-        />
-
-        <FiltersPanel
-          filtros={filtros}
-          onFiltrosChange={setFiltros}
-          ufs={ufsDisponiveis}
-          tiposSoro={tiposSoroDisponiveis}
-        />
-      </main>
-
-      <ResultsTable centros={centrosFiltrados} />
+    <div className="flex-1 flex items-center justify-center bg-gray-50">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">{title}</h1>
+        <p className="text-gray-600">Em desenvolvimento</p>
+      </div>
     </div>
   );
 }
 
+/**
+ * Root application component.
+ *
+ * Provides:
+ * - Browser router context
+ * - Consistent layout (Header, main content, Footer)
+ * - Route definitions
+ */
+export function App() {
+  logger.debug('App component mounted');
+
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/metricas" element={<PlaceholderPage title="Métricas" />} />
+            <Route path="/sobre" element={<PlaceholderPage title="Sobre" />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
