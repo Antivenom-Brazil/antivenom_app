@@ -15,9 +15,13 @@ import { MapPanel } from '../../components/MapPanel/MapPanel';
 import { NearestPanel } from '../../components/NearestPanel';
 import { useNearestCentros } from '../../hooks/useNearestCentros';
 import { centrosMock } from '../../../infrastructure/data/centros.mock';
+import { getSection } from '../../../infrastructure/content';
 import { createLogger } from '../../../infrastructure/logging/logger';
 
 const logger = createLogger('HomePage');
+
+// Load content from declarative YAML
+const mapSectionContent = getSection('map_section');
 
 /**
  * Calculates quick metrics from centers data.
@@ -71,10 +75,10 @@ export function HomePage() {
                     {/* Section Header */}
                     <div className="mb-6">
                         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                            Mapa Interativo
+                            {mapSectionContent.title}
                         </h2>
                         <p className="mt-2 text-gray-600">
-                            Visualize os centros de distribuição e encontre o mais próximo de você
+                            {mapSectionContent.description}
                         </p>
                     </div>
 

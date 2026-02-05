@@ -20,10 +20,14 @@ import {
 } from '../../../infrastructure/mapbox/MapboxMapAdapter';
 import { UserMarkerManager } from '../../../infrastructure/mapbox/UserMarkerManager';
 import { useUserLocation } from '../../hooks/useUserLocation';
+import { getSection } from '../../../infrastructure/content';
 import { createLogger } from '../../../infrastructure/logging/logger';
 import '../../styles/user-marker.css';
 
 const logger = createLogger('MapPanel');
+
+// Load content from declarative YAML
+const content = getSection('map_panel');
 
 /**
  * Interactive map panel with visualization modes and user location.
@@ -44,7 +48,7 @@ export function MapPanel() {
     if (!mapContainerRef.current || mapRef.current) return;
 
     if (!isTokenValid()) {
-      setError('Mapbox token not configured. Set VITE_MAPBOX_TOKEN in .env file');
+      setError(content.errors.token_missing);
       return;
     }
 
@@ -56,7 +60,7 @@ export function MapPanel() {
         logger.info('Map loaded and ready');
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error creating map');
+      setError(err instanceof Error ? err.message : content.errors.map_error);
     }
 
     return () => {
@@ -115,6 +119,15 @@ export function MapPanel() {
     );
   }
 
+  /**
+   * Get location button text based on current state.
+   */
+  const getLocationText = (): string => {
+    if (userLocation.status === 'loading') return content.controls.locating;
+    if (userLocation.hasLocation) return content.controls.located;
+    return content.controls.my_location;
+  };
+
   return (
     <div className="flex flex-col h-full min-h-[400px] lg:min-h-[500px]">
       {/* Controls */}
@@ -134,7 +147,7 @@ export function MapPanel() {
             `}
           >
             <MapPin className="w-4 h-4" />
-            <span className="hidden sm:inline">Pontos</span>
+            <span className="hidden sm:inline">{content.controls.points}</span>
           </button>
           <button
             type="button"
@@ -149,7 +162,7 @@ export function MapPanel() {
             `}
           >
             <Flame className="w-4 h-4" />
-            <span className="hidden sm:inline">Heatmap</span>
+            <span className="hidden sm:inline">{content.controls.heatmap}</span>
           </button>
         </div>
 
@@ -158,7 +171,7 @@ export function MapPanel() {
           type="button"
           onClick={handleLocationClick}
           disabled={userLocation.status === 'loading' || !mapReady}
-          title={userLocation.hasError ? userLocation.errorMessage ?? '' : 'Show my location'}
+          title={userLocation.hasError ? userLocation.errorMessage ?? '' : content.aria.show_location}
           className={`
             flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
             transition-all duration-150 border
@@ -174,14 +187,12 @@ export function MapPanel() {
           {userLocation.status === 'loading' ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span className="hidden sm:inline">Localizando...</span>
+              <span className="hidden sm:inline">{getLocationText()}</span>
             </>
           ) : (
             <>
               <Navigation className="w-4 h-4" />
-              <span className="hidden sm:inline">
-                {userLocation.hasLocation ? 'Localizado' : 'Minha Localização'}
-              </span>
+              <span className="hidden sm:inline">{getLocationText()}</span>
             </>
           )}
         </button>

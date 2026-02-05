@@ -1,0 +1,96 @@
+# UI Content Configuration
+# All text content for the application in declarative YAML format
+# This enables easy maintenance and future internationalization
+
+app:
+  name: "Mapa Antiveneno"
+  title: "Mapa de Soro Antiveneno"
+  description: "Ferramenta para localização de centros de atendimento com soros antiofídicos disponíveis em todo o Brasil"
+
+header:
+  logo_text: "Mapa Antiveneno"
+  logo_text_mobile: "Antiveneno"
+  nav:
+    home:
+      label: "Home"
+      path: "/"
+    metrics:
+      label: "Métricas"
+      path: "/metricas"
+    about:
+      label: "Sobre"
+      path: "/sobre"
+  aria:
+    open_menu: "Open menu"
+    close_menu: "Close menu"
+
+hero_banner:
+  title: "Mapa de Soro Antiveneno"
+  tagline: "Localize os centros de atendimento mais próximos com soros antiofídicos disponíveis em todo o Brasil"
+  cta:
+    explore_map: "Explorar Mapa"
+    view_stats: "Ver Estatísticas"
+  metrics:
+    centers:
+      label: "Centros"
+    states:
+      label: "Estados"
+    regions:
+      label: "Regiões"
+
+map_section:
+  title: "Mapa Interativo"
+  description: "Visualize os centros de distribuição e encontre o mais próximo de você"
+
+map_panel:
+  controls:
+    points: "Pontos"
+    heatmap: "Heatmap"
+    my_location: "Minha Localização"
+    locating: "Localizando..."
+    located: "Localizado"
+  errors:
+    token_missing: "Mapbox token not configured. Set VITE_MAPBOX_TOKEN in .env file"
+    map_error: "Error creating map"
+  aria:
+    show_location: "Show my location"
+
+nearest_panel:
+  title: "Centros Mais Próximos"
+  button:
+    find: "Encontrar Próximos"
+    loading: "Localizando..."
+    clear: "Limpar"
+  results:
+    single: "centro encontrado"
+    plural: "centros encontrados"
+  empty_state: "Clique no botão acima para localizar os centros mais perto de você."
+
+footer:
+  about:
+    title: "Mapa de Soro Antiveneno"
+    description: "Ferramenta para localização de centros de atendimento com soros antiofídicos disponíveis em todo o Brasil."
+  links:
+    title: "Links"
+    map: "Mapa"
+    metrics: "Métricas"
+    about: "Sobre o Projeto"
+  data_sources:
+    title: "Fontes de Dados"
+    items:
+      - "Ministério da Saúde"
+      - "CNES - Cadastro Nacional"
+      - "Secretarias Estaduais"
+  copyright: "© {year} Mapa Antiveneno. Dados abertos."
+  made_with: "Feito com"
+  location: "no Brasil"
+
+placeholders:
+  in_development: "Em desenvolvimento"
+
+errors:
+  generic: "Ocorreu um erro. Tente novamente."
+  location_denied: "Permissão de localização negada. Verifique as configurações do navegador."
+  location_unavailable: "Não foi possível determinar sua localização. Tente novamente."
+  location_timeout: "Tempo limite excedido ao obter localização. Tente novamente."
+  location_unsupported: "Seu navegador não suporta geolocalização."

@@ -13,9 +13,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, BarChart3, Building2, Map, Globe } from 'lucide-react';
+import { getSection } from '../../../infrastructure/content';
 import { createLogger } from '../../../infrastructure/logging/logger';
 
 const logger = createLogger('HeroBanner');
+
+// Load content from declarative YAML
+const content = getSection('hero_banner');
 
 /**
  * Props for the HeroBanner component.
@@ -128,13 +132,12 @@ export function HeroBanner({
                 <div className="text-center">
                     {/* Title */}
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 animate-fade-in-up">
-                        Mapa de Soro Antiveneno
+                        {content.title}
                     </h1>
 
                     {/* Tagline */}
                     <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8 animate-fade-in-up animation-delay-150">
-                        Localize os centros de atendimento mais próximos com soros
-                        antiofídicos disponíveis em todo o Brasil
+                        {content.tagline}
                     </p>
 
                     {/* CTA Buttons */}
@@ -151,7 +154,7 @@ export function HeroBanner({
               "
                         >
                             <Map className="w-5 h-5" />
-                            Explorar Mapa
+                            {content.cta.explore_map}
                         </button>
 
                         <button
@@ -166,7 +169,7 @@ export function HeroBanner({
               "
                         >
                             <BarChart3 className="w-5 h-5" />
-                            Ver Estatísticas
+                            {content.cta.view_stats}
                         </button>
                     </div>
 
@@ -175,19 +178,19 @@ export function HeroBanner({
                         <div className="inline-flex flex-wrap justify-center gap-4 sm:gap-8 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4">
                             <MetricItem
                                 value={totalCentros}
-                                label="Centros"
+                                label={content.metrics.centers.label}
                                 icon={<Building2 className="w-5 h-5" />}
                             />
                             <div className="hidden sm:block w-px bg-white/20" />
                             <MetricItem
                                 value={totalEstados}
-                                label="Estados"
+                                label={content.metrics.states.label}
                                 icon={<MapPin className="w-5 h-5" />}
                             />
                             <div className="hidden sm:block w-px bg-white/20" />
                             <MetricItem
                                 value={totalRegioes}
-                                label="Regiões"
+                                label={content.metrics.regions.label}
                                 icon={<Globe className="w-5 h-5" />}
                             />
                         </div>

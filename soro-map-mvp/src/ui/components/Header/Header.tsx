@@ -12,9 +12,13 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, MapPin, BarChart3, Info } from 'lucide-react';
+import { getSection } from '../../../infrastructure/content';
 import { createLogger } from '../../../infrastructure/logging/logger';
 
 const logger = createLogger('Header');
+
+// Load content from declarative YAML
+const content = getSection('header');
 
 /**
  * Navigation item configuration.
@@ -26,12 +30,12 @@ interface NavItem {
 }
 
 /**
- * Available navigation items.
+ * Available navigation items with icons.
  */
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', path: '/', icon: <MapPin className="w-4 h-4" /> },
-  { label: 'Métricas', path: '/metricas', icon: <BarChart3 className="w-4 h-4" /> },
-  { label: 'Sobre', path: '/sobre', icon: <Info className="w-4 h-4" /> },
+  { label: content.nav.home.label, path: content.nav.home.path, icon: <MapPin className="w-4 h-4" /> },
+  { label: content.nav.metrics.label, path: content.nav.metrics.path, icon: <BarChart3 className="w-4 h-4" /> },
+  { label: content.nav.about.label, path: content.nav.about.path, icon: <Info className="w-4 h-4" /> },
 ];
 
 /**
@@ -70,9 +74,11 @@ export function Header() {
           >
             <MapPin className="w-6 h-6" />
             <span className="font-bold text-lg hidden sm:inline">
-              Mapa Antiveneno
+              {content.logo_text}
             </span>
-            <span className="font-bold text-lg sm:hidden">Antiveneno</span>
+            <span className="font-bold text-lg sm:hidden">
+              {content.logo_text_mobile}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -103,7 +109,7 @@ export function Header() {
             className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
             onClick={toggleMobileMenu}
             aria-expanded={isMobileMenuOpen}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMobileMenuOpen ? content.aria.close_menu : content.aria.open_menu}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />

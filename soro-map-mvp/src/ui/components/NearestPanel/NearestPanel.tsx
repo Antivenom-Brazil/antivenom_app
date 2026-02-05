@@ -9,6 +9,10 @@
 
 import { MapPin, Loader2, AlertCircle, X, Navigation } from 'lucide-react';
 import type { NearestCentroResult } from '../../../domain/models/NearestResult';
+import { getSection, pluralize } from '../../../infrastructure/content';
+
+// Load content from declarative YAML
+const content = getSection('nearest_panel');
 
 /**
  * Props for the NearestPanel component.
@@ -89,12 +93,20 @@ export function NearestPanel({
     const hasResults = results.length > 0;
     const hasError = errorMessage !== null;
 
+    /**
+     * Get pluralized result text.
+     */
+    const getResultText = (): string => {
+        const count = results.length;
+        return `${count} ${pluralize(count, content.results.single, content.results.plural)}`;
+    };
+
     return (
         <section aria-labelledby="nearest-title" className="h-full flex flex-col">
             {/* Header */}
             <header className="flex flex-col gap-3 mb-4">
                 <h3 id="nearest-title" className="text-lg font-semibold text-gray-900">
-                    Centros Mais Próximos
+                    {content.title}
                 </h3>
                 <button
                     type="button"
@@ -111,12 +123,12 @@ export function NearestPanel({
                     {isLoading ? (
                         <>
                             <Loader2 className="w-4 h-4 animate-spin" />
-                            Localizando...
+                            {content.button.loading}
                         </>
                     ) : (
                         <>
                             <MapPin className="w-4 h-4" />
-                            Encontrar Próximos
+                            {content.button.find}
                         </>
                     )}
                 </button>
@@ -137,16 +149,14 @@ export function NearestPanel({
             {hasResults && (
                 <div className="flex-1 flex flex-col min-h-0">
                     <div className="flex items-center justify-between mb-3">
-                        <p className="text-sm text-gray-600">
-                            {results.length} {results.length === 1 ? 'centro encontrado' : 'centros encontrados'}
-                        </p>
+                        <p className="text-sm text-gray-600">{getResultText()}</p>
                         <button
                             type="button"
                             onClick={onClear}
                             className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
                         >
                             <X className="w-3 h-3" />
-                            Limpar
+                            {content.button.clear}
                         </button>
                     </div>
 
@@ -163,7 +173,7 @@ export function NearestPanel({
                 <div className="flex-1 flex flex-col items-center justify-center text-center py-8">
                     <MapPin className="w-12 h-12 text-gray-300 mb-3" />
                     <p className="text-gray-500 text-sm max-w-[200px]">
-                        Clique no botão acima para localizar os centros mais perto de você.
+                        {content.empty_state}
                     </p>
                 </div>
             )}
