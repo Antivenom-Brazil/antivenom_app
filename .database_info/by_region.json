@@ -1,0 +1,73 @@
+[
+  {
+    "region": "Southeast",
+    "total_centers": 449,
+    "percentage": 23.69,
+    "states": 4,
+    "municipalities": 424,
+    "states_list": [
+      "ES",
+      "MG",
+      "RJ",
+      "SP"
+    ]
+  },
+  {
+    "region": "Northeast",
+    "total_centers": 414,
+    "percentage": 21.85,
+    "states": 8,
+    "municipalities": 387,
+    "states_list": [
+      "AL",
+      "BA",
+      "MA",
+      "PB",
+      "PE",
+      "PI",
+      "RN",
+      "SE"
+    ]
+  },
+  {
+    "region": "South",
+    "total_centers": 385,
+    "percentage": 20.32,
+    "states": 3,
+    "municipalities": 325,
+    "states_list": [
+      "PR",
+      "RS",
+      "SC"
+    ]
+  },
+  {
+    "region": "North",
+    "total_centers": 382,
+    "percentage": 20.16,
+    "states": 7,
+    "municipalities": 307,
+    "states_list": [
+      "AC",
+      "AM",
+      "AP",
+      "PA",
+      "RO",
+      "RR",
+      "TO"
+    ]
+  },
+  {
+    "region": "Midwest",
+    "total_centers": 265,
+    "percentage": 13.98,
+    "states": 4,
+    "municipalities": 257,
+    "states_list": [
+      "DF",
+      "GO",
+      "MS",
+      "MT"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "total_with_coordinates": 1895,
+  "total_missing_coordinates": 0,
+  "bounds": {
+    "min_lat": -33.5256,
+    "max_lat": 18.72761,
+    "min_lng": -72.9085,
+    "max_lng": 64.7914668230771
+  },
+  "center": {
+    "lat": -15.513585423043779,
+    "lng": -48.82554501045701
+  }
+}

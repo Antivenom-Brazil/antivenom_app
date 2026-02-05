@@ -1,0 +1,24 @@
+{
+  "total_centers": 1895,
+  "total_states": 26,
+  "total_regions": 5,
+  "total_municipalities": 1678,
+  "centers_with_cnes": 1895,
+  "centers_with_phone": 1895,
+  "centers_with_coordinates": 1895,
+  "columns": [
+    "region",
+    "federal_unit",
+    "uf",
+    "municipio",
+    "unidade",
+    "endereco",
+    "telefone",
+    "cnes",
+    "atendimento_tipo",
+    "atendimento_info",
+    "latitude",
+    "longitude"
+  ],
+  "missing_data": {}
+}

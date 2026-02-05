@@ -1,0 +1,122 @@
+[
+  {
+    "municipio": "São Gabriel da Cachoeira",
+    "uf": "AM",
+    "region": "North",
+    "total_centers": 13
+  },
+  {
+    "municipio": "Curitiba",
+    "uf": "PR",
+    "region": "South",
+    "total_centers": 9
+  },
+  {
+    "municipio": "Ananindeua",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 5
+  },
+  {
+    "municipio": "Atalaia do Norte",
+    "uf": "AM",
+    "region": "North",
+    "total_centers": 5
+  },
+  {
+    "municipio": "Redenção",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 5
+  },
+  {
+    "municipio": "Toledo",
+    "uf": "PR",
+    "region": "South",
+    "total_centers": 5
+  },
+  {
+    "municipio": "Água Azul do Norte",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 4
+  },
+  {
+    "municipio": "Belém",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 4
+  },
+  {
+    "municipio": "São Felix do Xingu",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 4
+  },
+  {
+    "municipio": "Altamira",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Aracaju",
+    "uf": "SE",
+    "region": "Northeast",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Cianorte",
+    "uf": "PR",
+    "region": "South",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Cascavel",
+    "uf": "PR",
+    "region": "South",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Lages",
+    "uf": "SC",
+    "region": "South",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Irati",
+    "uf": "PR",
+    "region": "South",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Francisco Beltrão",
+    "uf": "PR",
+    "region": "South",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Barbacena Belo Horizonte",
+    "uf": "MG",
+    "region": "Southeast",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Blumenau",
+    "uf": "SC",
+    "region": "South",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Barcarena",
+    "uf": "PA",
+    "region": "North",
+    "total_centers": 3
+  },
+  {
+    "municipio": "Ipatinga Itabira",
+    "uf": "MG",
+    "region": "Southeast",
+    "total_centers": 3
+  }
+]

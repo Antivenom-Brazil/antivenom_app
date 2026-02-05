@@ -1,0 +1,236 @@
+[
+  {
+    "uf": "PR",
+    "federal_unit": "Paraná",
+    "region": "South",
+    "total_centers": 185,
+    "percentage": 9.76,
+    "municipalities": 137,
+    "centers_per_municipality": 1.35
+  },
+  {
+    "uf": "BA",
+    "federal_unit": "Bahia",
+    "region": "Northeast",
+    "total_centers": 181,
+    "percentage": 9.55,
+    "municipalities": 169,
+    "centers_per_municipality": 1.07
+  },
+  {
+    "uf": "MG",
+    "federal_unit": "Minas Gerais",
+    "region": "Southeast",
+    "total_centers": 180,
+    "percentage": 9.5,
+    "municipalities": 170,
+    "centers_per_municipality": 1.06
+  },
+  {
+    "uf": "SP",
+    "federal_unit": "São Paulo",
+    "region": "Southeast",
+    "total_centers": 180,
+    "percentage": 9.5,
+    "municipalities": 170,
+    "centers_per_municipality": 1.06
+  },
+  {
+    "uf": "PA",
+    "federal_unit": "Pará",
+    "region": "North",
+    "total_centers": 167,
+    "percentage": 8.81,
+    "municipalities": 133,
+    "centers_per_municipality": 1.26
+  },
+  {
+    "uf": "MA",
+    "federal_unit": "Maranhão",
+    "region": "Northeast",
+    "total_centers": 155,
+    "percentage": 8.18,
+    "municipalities": 148,
+    "centers_per_municipality": 1.05
+  },
+  {
+    "uf": "SC",
+    "federal_unit": "Santa Catarina",
+    "region": "South",
+    "total_centers": 141,
+    "percentage": 7.44,
+    "municipalities": 132,
+    "centers_per_municipality": 1.07
+  },
+  {
+    "uf": "MT",
+    "federal_unit": "Mato Grosso",
+    "region": "Midwest",
+    "total_centers": 100,
+    "percentage": 5.28,
+    "municipalities": 95,
+    "centers_per_municipality": 1.05
+  },
+  {
+    "uf": "AM",
+    "federal_unit": "Amazonas",
+    "region": "North",
+    "total_centers": 93,
+    "percentage": 4.91,
+    "municipalities": 62,
+    "centers_per_municipality": 1.5
+  },
+  {
+    "uf": "GO",
+    "federal_unit": "Goiás",
+    "region": "Midwest",
+    "total_centers": 90,
+    "percentage": 4.75,
+    "municipalities": 89,
+    "centers_per_municipality": 1.01
+  },
+  {
+    "uf": "MS",
+    "federal_unit": "Mato Grosso do Sul",
+    "region": "Midwest",
+    "total_centers": 66,
+    "percentage": 3.48,
+    "municipalities": 66,
+    "centers_per_municipality": 1.0
+  },
+  {
+    "uf": "ES",
+    "federal_unit": "Espiríto Santo",
+    "region": "Southeast",
+    "total_centers": 61,
+    "percentage": 3.22,
+    "municipalities": 59,
+    "centers_per_municipality": 1.03
+  },
+  {
+    "uf": "RS",
+    "federal_unit": "Rio Grande do Sul",
+    "region": "South",
+    "total_centers": 59,
+    "percentage": 3.11,
+    "municipalities": 57,
+    "centers_per_municipality": 1.04
+  },
+  {
+    "uf": "RO",
+    "federal_unit": "Rondônia",
+    "region": "North",
+    "total_centers": 37,
+    "percentage": 1.95,
+    "municipalities": 34,
+    "centers_per_municipality": 1.09
+  },
+  {
+    "uf": "TO",
+    "federal_unit": "Tocantins",
+    "region": "North",
+    "total_centers": 37,
+    "percentage": 1.95,
+    "municipalities": 33,
+    "centers_per_municipality": 1.12
+  },
+  {
+    "uf": "RJ",
+    "federal_unit": "Rio de Janeiro",
+    "region": "Southeast",
+    "total_centers": 28,
+    "percentage": 1.48,
+    "municipalities": 25,
+    "centers_per_municipality": 1.12
+  },
+  {
+    "uf": "AL",
+    "federal_unit": "Alagoas",
+    "region": "Northeast",
+    "total_centers": 19,
+    "percentage": 1.0,
+    "municipalities": 17,
+    "centers_per_municipality": 1.12
+  },
+  {
+    "uf": "AC",
+    "federal_unit": "Acre",
+    "region": "North",
+    "total_centers": 17,
+    "percentage": 0.9,
+    "municipalities": 17,
+    "centers_per_municipality": 1.0
+  },
+  {
+    "uf": "PI",
+    "federal_unit": "Piauí",
+    "region": "Northeast",
+    "total_centers": 17,
+    "percentage": 0.9,
+    "municipalities": 17,
+    "centers_per_municipality": 1.0
+  },
+  {
+    "uf": "SE",
+    "federal_unit": "Sergipe",
+    "region": "Northeast",
+    "total_centers": 17,
+    "percentage": 0.9,
+    "municipalities": 15,
+    "centers_per_municipality": 1.13
+  },
+  {
+    "uf": "AP",
+    "federal_unit": "Amapá",
+    "region": "North",
+    "total_centers": 16,
+    "percentage": 0.84,
+    "municipalities": 15,
+    "centers_per_municipality": 1.07
+  },
+  {
+    "uf": "RR",
+    "federal_unit": "Roraima",
+    "region": "North",
+    "total_centers": 15,
+    "percentage": 0.79,
+    "municipalities": 14,
+    "centers_per_municipality": 1.07
+  },
+  {
+    "uf": "PB",
+    "federal_unit": "Paraíba",
+    "region": "Northeast",
+    "total_centers": 10,
+    "percentage": 0.53,
+    "municipalities": 10,
+    "centers_per_municipality": 1.0
+  },
+  {
+    "uf": "PE",
+    "federal_unit": "Pernambuco",
+    "region": "Northeast",
+    "total_centers": 10,
+    "percentage": 0.53,
+    "municipalities": 9,
+    "centers_per_municipality": 1.11
+  },
+  {
+    "uf": "DF",
+    "federal_unit": "Distrito Federal",
+    "region": "Midwest",
+    "total_centers": 9,
+    "percentage": 0.47,
+    "municipalities": 9,
+    "centers_per_municipality": 1.0
+  },
+  {
+    "uf": "RN",
+    "federal_unit": "Rio grande do Norte",
+    "region": "Northeast",
+    "total_centers": 5,
+    "percentage": 0.26,
+    "municipalities": 4,
+    "centers_per_municipality": 1.25
+  }
+]
