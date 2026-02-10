@@ -1,14 +1,12 @@
 import type { CircleLayerSpecification, HeatmapLayerSpecification } from 'mapbox-gl';
 
-// Source do tileset com os dados reais no Mapbox Studio
-export const SOURCE_ID = 'composite';
-export const SOURCE_LAYER = 'addresses-7td9su';
+// Source ID for the local GeoJSON data
+export const SOURCE_ID = 'centros-source';
 
 export const pointsLayer: CircleLayerSpecification = {
   id: 'points',
   type: 'circle',
   source: SOURCE_ID,
-  'source-layer': SOURCE_LAYER,
   paint: {
     'circle-color': 'rgb(0, 204, 92)',
     'circle-radius': 4,
@@ -22,7 +20,6 @@ export const heatmapLayer: HeatmapLayerSpecification = {
   id: 'heatmap',
   type: 'heatmap',
   source: SOURCE_ID,
-  'source-layer': SOURCE_LAYER,
   paint: {
     'heatmap-radius': 12,
     'heatmap-intensity': 1,

@@ -10,6 +10,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Map } from 'mapbox-gl';
 import { MapPin, Activity, Navigation, Loader2, AlertCircle } from 'lucide-react';
 import {
@@ -36,6 +37,7 @@ export function MapPanel() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const markerManagerRef = useRef<UserMarkerManager | null>(null);
+  const navigate = useNavigate();
 
   const [mode, setMode] = useState<MapMode>('points');
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +55,9 @@ export function MapPanel() {
     }
 
     try {
-      mapRef.current = createMap(mapContainerRef.current);
+      mapRef.current = createMap(mapContainerRef.current, (centroId) => {
+        navigate(`/centro/${centroId}`);
+      });
 
       mapRef.current.on('load', () => {
         setMapReady(true);

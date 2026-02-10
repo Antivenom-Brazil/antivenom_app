@@ -9,12 +9,13 @@
  * @module ui/pages/HomePage
  */
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { HeroBanner } from '../../components/HeroBanner';
 import { MapPanel } from '../../components/MapPanel/MapPanel';
 import { NearestPanel } from '../../components/NearestPanel';
 import { useNearestCentros } from '../../hooks/useNearestCentros';
-import { centrosMock } from '../../../infrastructure/data/centros.mock';
+import { loadCentros } from '../../../infrastructure/data/centrosData';
+import type { Centro } from '../../../domain/models/Centro';
 import { getSection } from '../../../infrastructure/content';
 import { createLogger } from '../../../infrastructure/logging/logger';
 
@@ -26,7 +27,7 @@ const mapSectionContent = getSection('map_section');
 /**
  * Calculates quick metrics from centers data.
  */
-function useMetrics(centros: typeof centrosMock) {
+function useMetrics(centros: Centro[]) {
     return useMemo(() => {
         const uniqueStates = new Set(centros.map((c) => c.uf)).size;
         const uniqueRegions = 5; // Brazil has 5 regions
@@ -44,8 +45,17 @@ function useMetrics(centros: typeof centrosMock) {
  */
 export function HomePage() {
     const mapSectionRef = useRef<HTMLElement>(null);
-    const metrics = useMetrics(centrosMock);
-    const nearest = useNearestCentros(centrosMock);
+    const [centros, setCentros] = useState<Centro[]>([]);
+
+    // Load real centros data from centros.json (single source of truth)
+    useEffect(() => {
+        loadCentros()
+            .then(setCentros)
+            .catch((err) => logger.error('Failed to load centros', { metadata: { error: String(err) } }));
+    }, []);
+
+    const metrics = useMetrics(centros);
+    const nearest = useNearestCentros(centros);
 
     const scrollToMap = () => {
         logger.info('Scrolling to map section');
